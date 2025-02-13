@@ -5,6 +5,15 @@ const postRouter = require("./router/postRouter");
 
 app.use(express.static('public'));
 
+// registro il body-parser per "application/json"
+app.use(express.json());
+
+app.post("/", (req, res) => {
+    // dentro req.body troveremo
+    // i dati ricevuti in formato json
+    console.log(req.body);
+});
+
 app.get('/', (req, res) => {
     res.send('Hello World!')
 });
