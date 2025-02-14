@@ -35,7 +35,7 @@ function update(req, res) {
     // recuperiamo l'id dall' URL e trasformiamolo in numero
     const id = parseInt(req.params.id)
 
-    // cerchiamo il pizza tramite id
+    // cerchiamo il post tramite id
     const post = posts.find(post => post.id === id);
 
     // Piccolo controllo
@@ -60,7 +60,6 @@ function update(req, res) {
 
     // Restituiamo il post appena aggiornato
     res.json(post);
-
 };
 
 function modify(req, res) {
