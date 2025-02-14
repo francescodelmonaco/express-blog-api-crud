@@ -4,13 +4,8 @@ const port = 3000;
 const postRouter = require("./router/postRouter");
 
 // middlewares
-const notFound = require('./middlewares/notFound.js');
-const errorsHandler = require('./middlewares/errorsHandler.js');
-
 app.use(express.static('public'));
 app.use(express.json());
-app.use(notFound);
-app.use(errorsHandler);
 
 app.post("/", (req, res) => {
     // dentro req.body troveremo
@@ -23,6 +18,12 @@ app.get('/', (req, res) => {
 });
 
 app.use("/posts", postRouter);
+
+// middlewares
+const notFound = require('./middlewares/notFound.js');
+const errorsHandler = require('./middlewares/errorsHandler.js');
+app.use(notFound);
+app.use(errorsHandler);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
