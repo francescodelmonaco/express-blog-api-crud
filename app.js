@@ -3,10 +3,14 @@ const app = express();
 const port = 3000;
 const postRouter = require("./router/postRouter");
 
-app.use(express.static('public'));
+// middlewares
+const notFound = require('./middlewares/notFound.js');
+const errorsHandler = require('./middlewares/errorsHandler.js');
 
-// registro il body-parser per "application/json"
+app.use(express.static('public'));
 app.use(express.json());
+app.use(notFound);
+app.use(errorsHandler);
 
 app.post("/", (req, res) => {
     // dentro req.body troveremo
