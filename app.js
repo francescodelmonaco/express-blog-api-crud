@@ -3,6 +3,13 @@ const app = express();
 const port = 3000;
 const postRouter = require("./router/postRouter");
 
+// cors
+const cors = require("cors");
+
+app.use(cors({
+    origin: "http://localhost:5173"
+}));
+
 // middlewares
 app.use(express.static('public'));
 app.use(express.json());
